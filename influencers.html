@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saray Agency - Elite Influencer Marketing</title>
+    <title>Saray Agency - Influencer Network</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <!-- Lucide icons for static use -->
@@ -11,7 +11,7 @@
     <script>
         // Global JS for Navbar (Simulating active state and mobile menu)
         document.addEventListener('DOMContentLoaded', () => {
-            const currentPage = 'index';
+            const currentPage = 'influencers';
             
             // Highlight active link
             document.querySelectorAll('.nav-link').forEach(link => {
@@ -33,13 +33,13 @@
                 mobileMenuBtn.addEventListener('click', () => {
                     const isOpen = mobileMenu.classList.toggle('hidden');
                     mobileMenuIcon.innerHTML = isOpen ? '<i class="lucide-icon" data-lucide="menu"></i>' : '<i class="lucide-icon" data-lucide="x"></i>';
-                    lucide.createIcons(); // Re-render Lucide icons
+                    lucide.createIcons();
                 });
             }
         });
     </script>
 </head>
-<body class="min-h-screen bg-black font-montserrat" data-page="index">
+<body class="min-h-screen bg-black font-montserrat" data-page="influencers">
     
     <!-- Navbar -->
     <nav class="navbar-fixed fixed w-full z-50 transition-all duration-500">
@@ -51,10 +51,10 @@
 
             <!-- Desktop Nav -->
             <div class="hidden md:flex space-x-8 items-center">
-                <a href="index.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gold">Home</a>
+                <a href="index.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Home</a>
                 <a href="about.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">About</a>
                 <a href="services.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Services</a>
-                <a href="influencers.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Influencers</a>
+                <a href="influencers.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gold">Influencers</a>
                 <a href="brands.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Brands</a>
                 <a href="mediakit.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Media Kit</a>
                 <a href="contact.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Contact</a>
@@ -88,123 +88,113 @@
     </nav>
     
     <main class="transition-opacity duration-500 ease-in-out">
-        <!-- Home Page Content -->
-        <div class="w-full">
-            <!-- Hero -->
-            <section class="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-                <div class="absolute inset-0 z-0 opacity-40">
-                    <img 
-                      src="https://images.unsplash.com/photo-1531256379416-9f000e90aacc?q=80&w=1920&auto=format&fit=crop" 
-                      alt="Luxury Fashion" 
-                      class="w-full h-full object-cover"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                </div>
-                
-                <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-                    <div class="animate-fade-in-up">
-                        <h1 class="font-playfair text-5xl md:text-7xl lg:text-8xl text-white mb-6 leading-tight">
-                            Elite Influencer <br />
-                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-[#F2D06B]">Marketing</span>
-                        </h1>
-                        <p class="font-montserrat text-gray-300 text-lg md:text-xl tracking-wide mb-10 max-w-2xl mx-auto font-light">
-                            We connect premium brands with high-performing creators to craft narratives that convert.
-                        </p>
-                        <div class="flex flex-col md:flex-row justify-center gap-6">
-                            <a 
-                              href="contact.html"
-                              class="px-8 py-4 bg-gold text-black font-montserrat font-bold tracking-widest uppercase text-sm hover:bg-white transition-colors duration-300"
-                            >
-                              Work With Us
-                            </a>
-                            <a 
-                              href="influencers.html"
-                              class="px-8 py-4 border border-white text-white font-montserrat font-bold tracking-widest uppercase text-sm hover:bg-white hover:text-black transition-colors duration-300"
-                            >
-                              For Influencers
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Featured Services Preview -->
-            <section class="py-24 bg-black">
-                <div class="max-w-7xl mx-auto px-6">
-                    <!-- SectionHeader -->
-                    <div class="mb-16 text-center">
-                        <h2 class="text-gold font-montserrat text-xs tracking-[0.3em] uppercase mb-3">
-                            What We Do
-                        </h2>
-                        <h3 class="text-3xl md:text-5xl font-playfair text-white leading-tight">
-                            Our Expertise
-                        </h3>
-                    </div>
-                    <!-- /SectionHeader -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <!-- ServiceCard 1 -->
-                        <div class="agency-card-hover group p-8 border border-white/5 bg-[#0a0a0a] relative overflow-hidden">
-                            <div class="mb-6 transform transition-transform duration-500 icon-transform">
-                                <i class="lucide-icon w-8 h-8 text-gold" data-lucide="trending-up"></i>
-                            </div>
-                            <h3 class="text-xl font-playfair text-white mb-3 transition-colors title-gold">Campaign Management</h3>
-                            <p class="text-gray-400 font-montserrat text-sm leading-relaxed">End-to-end execution of high-impact influencer campaigns tailored to your brand's prestige.</p>
-                        </div>
-                        <!-- ServiceCard 2 -->
-                        <div class="agency-card-hover group p-8 border border-white/5 bg-[#0a0a0a] relative overflow-hidden">
-                            <div class="mb-6 transform transition-transform duration-500 icon-transform">
-                                <i class="lucide-icon w-8 h-8 text-gold" data-lucide="users"></i>
-                            </div>
-                            <h3 class="text-xl font-playfair text-white mb-3 transition-colors title-gold">Creator Sourcing</h3>
-                            <p class="text-gray-400 font-montserrat text-sm leading-relaxed">Access our exclusive network of vetted, high-conversion luxury creators.</p>
-                        </div>
-                        <!-- ServiceCard 3 -->
-                        <div class="agency-card-hover group p-8 border border-white/5 bg-[#0a0a0a] relative overflow-hidden">
-                            <div class="mb-6 transform transition-transform duration-500 icon-transform">
-                                <i class="lucide-icon w-8 h-8 text-gold" data-lucide="camera"></i>
-                            </div>
-                            <h3 class="text-xl font-playfair text-white mb-3 transition-colors title-gold">UGC Production</h3>
-                            <p class="text-gray-400 font-montserrat text-sm leading-relaxed">Premium user-generated content that blends authenticity with editorial quality.</p>
-                        </div>
-                    </div>
-                    <div class="mt-12 text-center">
-                        <a href="services.html" class="text-gold font-montserrat text-sm tracking-widest uppercase border-b border-gold pb-1 hover:text-white hover:border-white transition-all">View All Services</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Brand Video / Stats Parallax -->
-            <section class="py-32 relative bg-fixed bg-center bg-cover" style="background-image: url('https://images.unsplash.com/photo-1565538420870-da08ff96a207?q=80&w=1920&auto=format&fit=crop');">
-                <div class="absolute inset-0 bg-black/80"></div>
-                <div class="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                    <div>
-                        <div class="text-gold text-5xl font-playfair font-bold mb-2">500+</div>
-                        <div class="text-white font-montserrat tracking-widest uppercase text-sm">Campaigns Launched</div>
-                    </div>
-                    <div>
-                        <div class="text-gold text-5xl font-playfair font-bold mb-2">$50M+</div>
-                        <div class="text-white font-montserrat tracking-widest uppercase text-sm">Revenue Generated</div>
-                    </div>
-                    <div>
-                        <div class="text-gold text-5xl font-playfair font-bold mb-2">2K+</div>
-                        <div class="text-white font-montserrat tracking-widest uppercase text-sm">Vetted Creators</div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Testimonials -->
-            <section class="py-24 bg-[#0a0a0a]">
-                <div class="max-w-4xl mx-auto px-6 text-center">
-                    <i class="lucide-icon w-8 h-8 text-gold mx-auto mb-8" data-lucide="star"></i>
-                    <h3 class="text-3xl md:text-4xl font-playfair text-white italic leading-relaxed mb-8">
-                        "Saray Agency transformed our digital presence. The caliber of influencers they provide is unmatched in the luxury sector."
+        <!-- Influencers Page Content -->
+        <div class="w-full pt-32 pb-24 bg-black min-h-screen">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- SectionHeader -->
+                <div class="mb-16 text-center">
+                    <h2 class="text-gold font-montserrat text-xs tracking-[0.3em] uppercase mb-3">
+                        The Collective
+                    </h2>
+                    <h3 class="text-3xl md:text-5xl font-playfair text-white leading-tight">
+                        Our Talent Network
                     </h3>
-                    <div>
-                        <p class="text-gold font-bold font-montserrat uppercase tracking-wider">Elena V.</p>
-                        <p class="text-gray-500 text-sm font-montserrat mt-1">CMO, Aurum Jewelry</p>
+                </div>
+                <!-- /SectionHeader -->
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Influencer Card 1 -->
+                    <div class="relative group overflow-hidden h-[400px] cursor-pointer">
+                        <img 
+                            src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop" 
+                            alt="Beauty Influencer" 
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black to-transparent">
+                            <h3 class="text-2xl font-playfair text-white mb-1">Beauty</h3>
+                            <div class="flex items-center space-x-2">
+                                <div class="h-[1px] w-8 bg-gold"></div>
+                                <p class="text-gray-300 font-montserrat text-sm">1.2k+ Creators</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Influencer Card 2 -->
+                    <div class="relative group overflow-hidden h-[400px] cursor-pointer">
+                        <img 
+                            src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop" 
+                            alt="Fashion Influencer" 
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black to-transparent">
+                            <h3 class="text-2xl font-playfair text-white mb-1">Fashion</h3>
+                            <div class="flex items-center space-x-2">
+                                <div class="h-[1px] w-8 bg-gold"></div>
+                                <p class="text-gray-300 font-montserrat text-sm">850+ Creators</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Influencer Card 3 -->
+                    <div class="relative group overflow-hidden h-[400px] cursor-pointer">
+                        <img 
+                            src="https://images.pexels.com/photos/35060753/pexels-photo-35060753.jpeg" 
+                            alt="Luxury Lifestyle Influencer" 
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black to-transparent">
+                            <h3 class="text-2xl font-playfair text-white mb-1">Luxury Lifestyle</h3>
+                            <div class="flex items-center space-x-2">
+                                <div class="h-[1px] w-8 bg-gold"></div>
+                                <p class="text-gray-300 font-montserrat text-sm">400+ Creators</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Influencer Card 4 -->
+                    <div class="relative group overflow-hidden h-[400px] cursor-pointer">
+                        <img 
+                            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" 
+                            alt="Fitness Influencer" 
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black to-transparent">
+                            <h3 class="text-2xl font-playfair text-white mb-1">Fitness</h3>
+                            <div class="flex items-center space-x-2">
+                                <div class="h-[1px] w-8 bg-gold"></div>
+                                <p class="text-gray-300 font-montserrat text-sm">600+ Creators</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Influencer Card 5 -->
+                    <div class="relative group overflow-hidden h-[400px] cursor-pointer">
+                        <img 
+                            src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg" 
+                            alt="Travel Influencer" 
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500"></div>
+                        <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-black to-transparent">
+                            <h3 class="text-2xl font-playfair text-white mb-1">Travel</h3>
+                            <div class="flex items-center space-x-2">
+                                <div class="h-[1px] w-8 bg-gold"></div>
+                                <p class="text-gray-300 font-montserrat text-sm">900+ Creators</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Call to Action Card -->
+                    <div class="relative h-[400px] bg-[#0a0a0a] border border-white/10 flex flex-col justify-center items-center text-center p-8 group hover:border-gold/50 transition-colors">
+                        <i class="lucide-icon w-12 h-12 text-gold mb-6" data-lucide="star"></i>
+                        <h3 class="text-2xl font-playfair text-white mb-4">Join The Roster</h3>
+                        <p class="text-gray-400 font-montserrat text-sm mb-8">Are you a creator with a premium audience?</p>
+                        <a href="contact.html" class="px-8 py-3 bg-white text-black font-montserrat font-bold text-xs uppercase tracking-widest hover:bg-gold transition-colors">
+                            Apply Now
+                        </a>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
     </main>
 

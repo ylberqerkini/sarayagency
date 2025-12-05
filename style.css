@@ -1,0 +1,115 @@
+/*
+ * Saray Agency - Custom Styles
+ * Palette: Black (#000000), Charcoal (#0a0a0a), Gold (#D4AF37)
+ * Typography: Playfair Display (Headings), Montserrat (Body)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Base Styles & Typography */
+:root {
+    --color-black: #000000;
+    --color-charcoal: #0a0a0a;
+    --color-gold: #D4AF37;
+    --color-white: #ffffff;
+}
+
+body {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    min-height: 100vh;
+}
+
+/* Custom Font Classes (Simulating Tailwind usage) */
+.font-playfair { 
+    font-family: 'Playfair Display', serif; 
+}
+.font-montserrat { 
+    font-family: 'Montserrat', sans-serif; 
+}
+
+/* Gold Accent and Colors */
+.text-gold {
+    color: var(--color-gold);
+}
+.bg-gold {
+    background-color: var(--color-gold);
+}
+.border-gold {
+    border-color: var(--color-gold);
+}
+
+/* Navbar fixed style (simulating scrolled state for static pages) */
+.navbar-fixed {
+    background-color: #000000e6; /* black/90 */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+/* Hero Animation Simulation (Used on index.html) */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.animate-fade-in-up > * {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Card Hover Effect (Used for Service Cards) */
+.agency-card-hover {
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.agency-card-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background-color: var(--color-gold);
+    transition: all 0.5s ease-in-out;
+}
+
+.agency-card-hover:hover::before {
+    height: 100%;
+}
+
+.agency-card-hover:hover {
+    border-color: rgba(212, 175, 55, 0.5);
+    background-color: #111;
+}
+
+.agency-card-hover:hover .icon-transform {
+    transform: translateY(-8px);
+}
+
+.agency-card-hover:hover .title-gold {
+    color: var(--color-gold);
+}
+
+/* Image Hover/Grayscale Effect for About Page */
+.img-grayscale {
+    filter: grayscale(100%);
+    transition: filter 0.7s ease-in-out;
+}
+.img-grayscale:hover {
+    filter: grayscale(0%);
+}
