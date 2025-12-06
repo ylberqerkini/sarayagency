@@ -36,17 +36,6 @@
                     lucide.createIcons();
                 });
             }
-            
-            // Form Submission Handling
-            document.getElementById('contact-form').addEventListener('submit', (e) => {
-                e.preventDefault();
-                // Simulating React's alert behavior with a custom message box as per instructions
-                const messageBox = document.getElementById('success-message');
-                messageBox.classList.remove('hidden');
-                setTimeout(() => {
-                    messageBox.classList.add('hidden');
-                }, 4000);
-            });
         });
     </script>
 </head>
@@ -64,10 +53,8 @@
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="index.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Home</a>
                 <a href="about.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">About</a>
-                <a href="services.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Services</a>
                 <a href="influencers.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Influencers</a>
                 <a href="brands.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Brands</a>
-                <a href="mediakit.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Media Kit</a>
                 <a href="contact.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gold">Contact</a>
                 <a 
                     href="contact.html"
@@ -90,10 +77,8 @@
         <div id="mobile-menu" class="hidden md:hidden absolute top-[64px] left-0 w-full bg-black border-b border-gold/30 py-8 flex flex-col items-center space-y-6">
             <a href="index.html" class="text-white hover:text-gold text-lg tracking-widest uppercase font-montserrat">Home</a>
             <a href="about.html" class="text-white hover:text-gold text-lg tracking-widest uppercase font-montserrat">About</a>
-            <a href="services.html" class="text-white hover:text-gold text-lg tracking-widest uppercase font-montserrat">Services</a>
             <a href="influencers.html" class="text-white hover:text-gold text-lg tracking-widest uppercase font-montserrat">Influencers</a>
             <a href="brands.html" class="text-white hover:text-gold text-lg tracking-widest uppercase font-montserrat">Brands</a>
-            <a href="mediakit.html" class="text-white hover:text-gold text-lg tracking-widest uppercase font-montserrat">Media Kit</a>
             <a href="contact.html" class="text-white hover:text-gold text-lg tracking-widest uppercase font-montserrat">Contact</a>
         </div>
     </nav>
@@ -123,12 +108,13 @@
                 </div>
 
                 <div class="bg-[#0a0a0a] p-8 md:p-12 border border-white/5">
-                    <form id="contact-form" class="space-y-8">
+                    <form id="contact-form" action="https://formsubmit.co/contactsarayagency@gmail.com" method="POST" class="space-y-8">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div class="space-y-2">
                                 <label class="text-gold font-montserrat text-xs uppercase tracking-widest">Full Name</label>
                                 <input 
                                   type="text" 
+                                  name="name"
                                   class="w-full bg-transparent border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition-colors font-playfair"
                                   required
                                 />
@@ -136,7 +122,8 @@
                             <div class="space-y-2">
                                 <label class="text-gold font-montserrat text-xs uppercase tracking-widest">Email Address</label>
                                 <input 
-                                  type="email" 
+                                  type="email"
+                                  name="email"
                                   class="w-full bg-transparent border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition-colors font-playfair"
                                   required
                                 />
@@ -168,10 +155,16 @@
                             <label class="text-gold font-montserrat text-xs uppercase tracking-widest">Message</label>
                             <textarea 
                               rows="4"
+                              name="message"
                               class="w-full bg-transparent border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition-colors font-playfair resize-none"
                               required
                             ></textarea>
                         </div>
+
+                        <!-- Hidden field to redirect after form submission -->
+                        <input type="hidden" name="_next" value="https://yourdomain.com/success.html">
+                        <!-- Optional: Disable CAPTCHA if using a custom form -->
+                        <input type="hidden" name="_captcha" value="false">
 
                         <div class="pt-6">
                             <button type="submit" class="px-10 py-4 bg-gold text-black font-montserrat font-bold text-sm uppercase tracking-widest hover:bg-white transition-colors w-full md:w-auto">
@@ -203,7 +196,6 @@
                 <h3 class="font-playfair text-lg text-gold mb-6">Company</h3>
                 <ul class="space-y-4 font-montserrat text-sm text-gray-400">
                     <li class="hover:text-white cursor-pointer transition-colors"><a href="about.html">About Us</a></li>
-                    <li class="hover:text-white cursor-pointer transition-colors"><a href="services.html">Services</a></li>
                     <li class="hover:text-white cursor-pointer transition-colors"><a href="brands.html">For Brands</a></li>
                     <li class="hover:text-white cursor-pointer transition-colors"><a href="contact.html">Contact</a></li>
                 </ul>
