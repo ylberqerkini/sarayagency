@@ -162,7 +162,7 @@
                         </div>
 
                         <!-- Hidden field to redirect after form submission -->
-                        <input type="hidden" name="_next" value="success.html">
+                        <input type="hidden" name="_next" value="https://sarayagency.com/success.html">
                         <!-- Optional: Disable CAPTCHA if using a custom form -->
                         <input type="hidden" name="_captcha" value="false">
 
@@ -233,55 +233,9 @@
         lucide.createIcons();
     </script>
     <script>
-        // Robust safeguard: ensure the contact form submits via POST even if the attribute is missing
-        (function(){
-            const form = document.getElementById('contact-form');
-            if (!form) return;
-
-            // Ensure the attribute is present initially
-            try { form.method = 'POST'; } catch (e) {}
-
-            // Helper: build and submit a temporary real form using POST (avoids fetch/CORS issues)
-            function submitViaTemporaryForm() {
-                try {
-                    const tmp = document.createElement('form');
-                    tmp.method = 'POST';
-                    tmp.action = form.action;
-                    tmp.style.display = 'none';
-
-                    const elements = form.querySelectorAll('input[name], textarea[name], select[name]');
-                    elements.forEach(el => {
-                        // Skip unchecked radios/checkboxes
-                        if ((el.type === 'radio' || el.type === 'checkbox') && !el.checked) return;
-                        const input = document.createElement('input');
-                        input.type = 'hidden';
-                        input.name = el.name;
-                        input.value = el.value || '';
-                        tmp.appendChild(input);
-                    });
-
-                    document.body.appendChild(tmp);
-                    tmp.submit();
-                } catch (err) {
-                    // Fallback: ensure method set and submit original form
-                    try { form.method = 'POST'; form.submit(); } catch (e) {}
-                }
-            }
-
-            // On native submit, ensure method is POST (best-effort)
-            form.addEventListener('submit', function (e) {
-                try { form.method = 'POST'; } catch (err) {}
-            });
-
-            // Intercept Enter key on inputs (except textarea) and submit via temporary POST form
-            form.addEventListener('keydown', function (e) {
-                const tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
-                if (e.key === 'Enter' && tag !== 'textarea') {
-                    e.preventDefault();
-                    submitViaTemporaryForm();
-                }
-            });
-        })();
+        // Ensure FormSubmit.co receives POST requests correctly
+        document.getElementById('contact-form').setAttribute('method', 'POST');
+        document.getElementById('contact-form').setAttribute('action', 'https://formsubmit.co/contactsarayagency@gmail.com');
     </script>
 </body>
 </html>
