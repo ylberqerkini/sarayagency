@@ -232,5 +232,21 @@
     <script>
         lucide.createIcons();
     </script>
+    <script>
+        // Ensure form method is POST at submit time (safeguard for browsers/forms missing attribute)
+        (function(){
+            const form = document.getElementById('contact-form');
+            if (!form) return;
+            form.addEventListener('submit', function (e) {
+                try {
+                    if (!form.method || form.method.toLowerCase() !== 'post') {
+                        form.method = 'POST';
+                    }
+                } catch (err) {
+                    // if anything goes wrong, allow native submit to proceed
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
