@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saray Agency - Contact Us</title>
+    <title>Message Sent - Saray Agency</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <!-- Lucide icons for static use -->
     <script src="https://unpkg.com/lucide@latest"></script> 
     <script>
-        // Global JS for Navbar (Simulating active state and mobile menu)
+        // Global JS for Navbar
         document.addEventListener('DOMContentLoaded', () => {
-            const currentPage = 'contact';
+            const currentPage = 'success';
             
             // Highlight active link
             document.querySelectorAll('.nav-link').forEach(link => {
@@ -39,7 +39,7 @@
         });
     </script>
 </head>
-<body class="min-h-screen bg-black font-montserrat" data-page="contact">
+<body class="min-h-screen bg-black font-montserrat" data-page="success">
     
     <!-- Navbar -->
     <nav class="navbar-fixed fixed w-full z-50 transition-all duration-500">
@@ -55,7 +55,7 @@
                 <a href="about.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">About</a>
                 <a href="influencers.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Influencers</a>
                 <a href="brands.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Brands</a>
-                <a href="contact.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gold">Contact</a>
+                <a href="contact.html" class="nav-link text-sm tracking-widest uppercase transition-colors duration-300 font-montserrat text-gray-300 hover:text-white">Contact</a>
                 <a 
                     href="contact.html"
                     class="px-6 py-2 border border-gold text-gold hover:bg-gold hover:text-black transition-all duration-300 uppercase text-xs tracking-widest font-bold"
@@ -84,94 +84,71 @@
     </nav>
     
     <main class="transition-opacity duration-500 ease-in-out">
-        <!-- Contact Page Content -->
-        <div class="w-full pt-32 pb-24 bg-black min-h-screen">
-            <div class="max-w-4xl mx-auto px-6">
-                <!-- SectionHeader -->
-                <div class="mb-16 text-center">
-                    <h2 class="text-gold font-montserrat text-xs tracking-[0.3em] uppercase mb-3">
-                        Contact Us
-                    </h2>
-                    <h3 class="text-3xl md:text-5xl font-playfair text-white leading-tight">
-                        Let's Create Together
-                    </h3>
-                </div>
-                <!-- /SectionHeader -->
-                
-                <!-- Success Message Modal -->
-                <div id="success-message" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 transition-opacity duration-500">
-                    <div class="bg-[#0a0a0a] p-8 rounded-lg shadow-2xl border border-gold/50 text-center max-w-sm">
-                        <i class="lucide-icon w-10 h-10 text-gold mx-auto mb-4" data-lucide="check-circle"></i>
-                        <h4 class="text-xl font-playfair text-white mb-2">Message Sent!</h4>
-                        <p class="text-gray-400 font-montserrat text-sm">Thank you. A representative will contact you within 24 hours.</p>
+        <!-- Success Page Content -->
+        <div class="w-full min-h-screen bg-black flex items-center justify-center pt-32 pb-24">
+            <div class="max-w-2xl mx-auto px-6 text-center">
+                <!-- Success Icon and Message -->
+                <div class="mb-8">
+                    <div class="inline-flex items-center justify-center w-24 h-24 bg-gold/10 rounded-full mb-6 border border-gold/30">
+                        <i class="lucide-icon w-12 h-12 text-gold" data-lucide="check-circle"></i>
                     </div>
                 </div>
 
-                <div class="bg-[#0a0a0a] p-8 md:p-12 border border-white/5">
-                    <form id="contact-form" action="https://formsubmit.co/contactsarayagency@gmail.com" method="POST" class="space-y-8">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="space-y-2">
-                                <label class="text-gold font-montserrat text-xs uppercase tracking-widest">Full Name</label>
-                                <input 
-                                  type="text" 
-                                  name="name"
-                                  class="w-full bg-transparent border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition-colors font-playfair"
-                                  required
-                                />
-                            </div>
-                            <div class="space-y-2">
-                                <label class="text-gold font-montserrat text-xs uppercase tracking-widest">Email Address</label>
-                                <input 
-                                  type="email"
-                                  name="email"
-                                  class="w-full bg-transparent border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition-colors font-playfair"
-                                  required
-                                />
-                            </div>
-                        </div>
+                <!-- Main Heading -->
+                <h1 class="font-playfair text-4xl md:text-6xl text-white mb-4 leading-tight">
+                    Message Sent!
+                </h1>
 
-                        <div class="space-y-4">
-                            <label class="text-gold font-montserrat text-xs uppercase tracking-widest">I am a</label>
-                            <div class="flex space-x-8">
-                                <label class="flex items-center space-x-3 cursor-pointer group">
-                                    <div class="w-4 h-4 border bg-gold border-gold flex items-center justify-center transition-colors"></div>
-                                    <span class="text-sm font-montserrat text-white">Brand</span>
-                                    <input type="radio" name="type" value="Brand" class="hidden" checked />
-                                </label>
-                                <label class="flex items-center space-x-3 cursor-pointer group">
-                                    <div class="w-4 h-4 border border-gray-500 flex items-center justify-center transition-colors"></div>
-                                    <span class="text-sm font-montserrat text-gray-500 group-hover:text-gray-300">Influencer</span>
-                                    <input type="radio" name="type" value="Influencer" class="hidden" />
-                                </label>
-                                <label class="flex items-center space-x-3 cursor-pointer group">
-                                    <div class="w-4 h-4 border border-gray-500 flex items-center justify-center transition-colors"></div>
-                                    <span class="text-sm font-montserrat text-gray-500 group-hover:text-gray-300">Agency</span>
-                                    <input type="radio" name="type" value="Agency" class="hidden" />
-                                </label>
-                            </div>
-                        </div>
+                <!-- Subtitle -->
+                <p class="font-montserrat text-gray-400 text-lg md:text-xl mb-6 leading-relaxed">
+                    Thank you for reaching out to Saray Agency. We have received your message and appreciate your interest.
+                </p>
 
-                        <div class="space-y-2">
-                            <label class="text-gold font-montserrat text-xs uppercase tracking-widest">Message</label>
-                            <textarea 
-                              rows="4"
-                              name="message"
-                              class="w-full bg-transparent border-b border-gray-700 text-white py-3 focus:outline-none focus:border-gold transition-colors font-playfair resize-none"
-                              required
-                            ></textarea>
-                        </div>
+                <!-- Details -->
+                <div class="bg-[#0a0a0a] border border-white/5 rounded-md p-8 md:p-10 mb-10">
+                    <h2 class="text-white font-playfair text-xl md:text-2xl mb-4">
+                        What's Next?
+                    </h2>
+                    <p class="text-gray-400 font-montserrat mb-6 leading-relaxed">
+                        Our team will review your inquiry and get back to you within <span class="text-gold font-bold">24 hours</span>. We're excited to discuss how we can collaborate with you to elevate your brand presence.
+                    </p>
+                    <div class="flex flex-col md:flex-row justify-center gap-3 text-sm font-montserrat text-gray-500">
+                        <span class="flex items-center justify-center md:justify-start">
+                            <i class="lucide-icon w-4 h-4 text-gold mr-2" data-lucide="mail"></i>
+                            Check your email for confirmation
+                        </span>
+                    </div>
+                </div>
 
-                        <!-- Hidden field to redirect after form submission -->
-                        <input type="hidden" name="_next" value="success.html">
-                        <!-- Optional: Disable CAPTCHA if using a custom form -->
-                        <input type="hidden" name="_captcha" value="false">
+                <!-- Additional Info -->
+                <p class="text-gray-500 font-montserrat text-sm mb-10">
+                    In the meantime, feel free to explore our influencer network or learn more about our services.
+                </p>
 
-                        <div class="pt-6">
-                            <button type="submit" class="px-10 py-4 bg-gold text-black font-montserrat font-bold text-sm uppercase tracking-widest hover:bg-white transition-colors w-full md:w-auto">
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
+                <!-- CTA Buttons -->
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a 
+                        href="index.html" 
+                        class="px-8 py-4 bg-gold text-black font-montserrat font-bold text-sm uppercase tracking-widest hover:bg-white transition-colors duration-300"
+                    >
+                        Back to Home
+                    </a>
+                    <a 
+                        href="influencers.html" 
+                        class="px-8 py-4 border border-gold text-gold font-montserrat font-bold text-sm uppercase tracking-widest hover:bg-gold hover:text-black transition-colors duration-300"
+                    >
+                        Explore Creators
+                    </a>
+                </div>
+
+                <!-- Support Info -->
+                <div class="mt-16 pt-8 border-t border-gray-900">
+                    <p class="text-gray-500 font-montserrat text-sm">
+                        Need immediate assistance? Reach out to us at 
+                        <a href="mailto:contactsarayagency@gmail.com" class="text-gold hover:text-white transition-colors">
+                            contactsarayagency@gmail.com
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
