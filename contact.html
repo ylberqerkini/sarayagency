@@ -233,17 +233,52 @@
         lucide.createIcons();
     </script>
     <script>
-        // Ensure form method is POST at submit time (safeguard for browsers/forms missing attribute)
+        // Robust safeguard: ensure the contact form submits via POST even if the attribute is missing
         (function(){
             const form = document.getElementById('contact-form');
             if (!form) return;
-            form.addEventListener('submit', function (e) {
+
+            // Ensure the attribute is present initially
+            try { form.method = 'POST'; } catch (e) {}
+
+            // Helper: build and submit a temporary real form using POST (avoids fetch/CORS issues)
+            function submitViaTemporaryForm() {
                 try {
-                    if (!form.method || form.method.toLowerCase() !== 'post') {
-                        form.method = 'POST';
-                    }
+                    const tmp = document.createElement('form');
+                    tmp.method = 'POST';
+                    tmp.action = form.action;
+                    tmp.style.display = 'none';
+
+                    const elements = form.querySelectorAll('input[name], textarea[name], select[name]');
+                    elements.forEach(el => {
+                        // Skip unchecked radios/checkboxes
+                        if ((el.type === 'radio' || el.type === 'checkbox') && !el.checked) return;
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = el.name;
+                        input.value = el.value || '';
+                        tmp.appendChild(input);
+                    });
+
+                    document.body.appendChild(tmp);
+                    tmp.submit();
                 } catch (err) {
-                    // if anything goes wrong, allow native submit to proceed
+                    // Fallback: ensure method set and submit original form
+                    try { form.method = 'POST'; form.submit(); } catch (e) {}
+                }
+            }
+
+            // On native submit, ensure method is POST (best-effort)
+            form.addEventListener('submit', function (e) {
+                try { form.method = 'POST'; } catch (err) {}
+            });
+
+            // Intercept Enter key on inputs (except textarea) and submit via temporary POST form
+            form.addEventListener('keydown', function (e) {
+                const tag = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
+                if (e.key === 'Enter' && tag !== 'textarea') {
+                    e.preventDefault();
+                    submitViaTemporaryForm();
                 }
             });
         })();
