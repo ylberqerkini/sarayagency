@@ -245,35 +245,54 @@
         lucide.createIcons();
     </script>
     <script>
-        // Handle radio button styling
-        document.querySelectorAll('.radio-input').forEach(input => {
-            input.addEventListener('change', function() {
-                // Remove active state from all radio buttons
-                document.querySelectorAll('.radio-input').forEach(el => {
-                    const button = el.nextElementSibling;
-                    const svg = button.querySelector('svg');
-                    button.classList.remove('bg-gold', 'border-gold');
-                    button.classList.add('border-gray-500');
-                    if (svg) svg.classList.add('hidden');
+        // Handle radio button styling - improved version
+        document.addEventListener('DOMContentLoaded', function() {
+            const radioInputs = document.querySelectorAll('input[type="radio"][name="type"]');
+            
+            // Initialize state on page load
+            radioInputs.forEach(input => {
+                updateRadioState(input);
+            });
+            
+            // Handle change events
+            radioInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    radioInputs.forEach(el => updateRadioState(el));
                 });
                 
-                // Add active state to selected radio button
-                if (this.checked) {
-                    const button = this.nextElementSibling;
-                    const svg = button.querySelector('svg');
-                    button.classList.remove('border-gray-500');
-                    button.classList.add('bg-gold', 'border-gold');
-                    if (svg) svg.classList.remove('hidden');
-                    
-                    // Update text color
-                    const span = button.nextElementSibling;
-                    if (span) {
-                        span.classList.remove('text-gray-500');
-                        span.classList.add('text-white');
-                    }
-                }
+                // Also handle click to ensure proper state update
+                input.addEventListener('click', function() {
+                    radioInputs.forEach(el => updateRadioState(el));
+                });
             });
         });
+        
+        function updateRadioState(input) {
+            const label = input.closest('label');
+            const button = label.querySelector('.radio-button');
+            const span = label.querySelector('span');
+            const svg = button.querySelector('svg');
+            
+            if (input.checked) {
+                // Active state
+                button.classList.remove('border-gray-500', 'bg-transparent');
+                button.classList.add('bg-gold', 'border-gold');
+                if (svg) svg.classList.remove('hidden');
+                if (span) {
+                    span.classList.remove('text-gray-500', 'group-hover:text-gray-300');
+                    span.classList.add('text-white');
+                }
+            } else {
+                // Inactive state
+                button.classList.remove('bg-gold', 'border-gold');
+                button.classList.add('border-gray-500', 'bg-transparent');
+                if (svg) svg.classList.add('hidden');
+                if (span) {
+                    span.classList.remove('text-white');
+                    span.classList.add('text-gray-500', 'group-hover:text-gray-300');
+                }
+            }
+        }
     </script>
     <script>
         // Ensure FormSubmit.co receives POST requests correctly
