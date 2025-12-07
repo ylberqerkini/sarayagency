@@ -132,21 +132,33 @@
 
                         <div class="space-y-4">
                             <label class="text-gold font-montserrat text-xs uppercase tracking-widest">I am a</label>
-                            <div class="flex space-x-8">
+                            <div class="flex flex-wrap gap-6">
                                 <label class="flex items-center space-x-3 cursor-pointer group">
-                                    <div class="w-4 h-4 border bg-gold border-gold flex items-center justify-center transition-colors"></div>
+                                    <input type="radio" name="type" value="Brand" class="radio-input hidden" checked />
+                                    <div class="radio-button w-5 h-5 border-2 border-gold rounded-full flex items-center justify-center transition-all bg-gold">
+                                        <svg class="w-3 h-3 text-black" fill="currentColor" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="3"/>
+                                        </svg>
+                                    </div>
                                     <span class="text-sm font-montserrat text-white">Brand</span>
-                                    <input type="radio" name="type" value="Brand" class="hidden" checked />
                                 </label>
                                 <label class="flex items-center space-x-3 cursor-pointer group">
-                                    <div class="w-4 h-4 border border-gray-500 flex items-center justify-center transition-colors"></div>
+                                    <input type="radio" name="type" value="Influencer" class="radio-input hidden" />
+                                    <div class="radio-button w-5 h-5 border-2 border-gray-500 rounded-full flex items-center justify-center transition-all">
+                                        <svg class="w-3 h-3 text-gold hidden" fill="currentColor" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="3"/>
+                                        </svg>
+                                    </div>
                                     <span class="text-sm font-montserrat text-gray-500 group-hover:text-gray-300">Influencer</span>
-                                    <input type="radio" name="type" value="Influencer" class="hidden" />
                                 </label>
                                 <label class="flex items-center space-x-3 cursor-pointer group">
-                                    <div class="w-4 h-4 border border-gray-500 flex items-center justify-center transition-colors"></div>
+                                    <input type="radio" name="type" value="Agency" class="radio-input hidden" />
+                                    <div class="radio-button w-5 h-5 border-2 border-gray-500 rounded-full flex items-center justify-center transition-all">
+                                        <svg class="w-3 h-3 text-gold hidden" fill="currentColor" viewBox="0 0 20 20">
+                                            <circle cx="10" cy="10" r="3"/>
+                                        </svg>
+                                    </div>
                                     <span class="text-sm font-montserrat text-gray-500 group-hover:text-gray-300">Agency</span>
-                                    <input type="radio" name="type" value="Agency" class="hidden" />
                                 </label>
                             </div>
                         </div>
@@ -231,6 +243,37 @@
     </footer>
     <script>
         lucide.createIcons();
+    </script>
+    <script>
+        // Handle radio button styling
+        document.querySelectorAll('.radio-input').forEach(input => {
+            input.addEventListener('change', function() {
+                // Remove active state from all radio buttons
+                document.querySelectorAll('.radio-input').forEach(el => {
+                    const button = el.nextElementSibling;
+                    const svg = button.querySelector('svg');
+                    button.classList.remove('bg-gold', 'border-gold');
+                    button.classList.add('border-gray-500');
+                    if (svg) svg.classList.add('hidden');
+                });
+                
+                // Add active state to selected radio button
+                if (this.checked) {
+                    const button = this.nextElementSibling;
+                    const svg = button.querySelector('svg');
+                    button.classList.remove('border-gray-500');
+                    button.classList.add('bg-gold', 'border-gold');
+                    if (svg) svg.classList.remove('hidden');
+                    
+                    // Update text color
+                    const span = button.nextElementSibling;
+                    if (span) {
+                        span.classList.remove('text-gray-500');
+                        span.classList.add('text-white');
+                    }
+                }
+            });
+        });
     </script>
     <script>
         // Ensure FormSubmit.co receives POST requests correctly
